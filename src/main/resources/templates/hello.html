@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Thymeleafを使用するための設定 -->
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<h1>Hello World</h1>
+<form method="post" action="/hello">
+    <!-- th:valueでコントローラークラスに値を渡す   -->
+    好きな文字を入力：<input type="text" name="text1" th:value="${text_value}" />
+    <input type="submit" value="Click">
+</form>
+<br />
+<form method="post" action="/hello/db">
+    従業員IDを入力：<input type="text" name="text2" th:value="${text2_value}">
+    <input type="submit" value="Click">
+</form>
+</body>
+</html>
