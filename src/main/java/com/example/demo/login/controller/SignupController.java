@@ -1,8 +1,11 @@
-package com.example.demo.login;
+package com.example.demo.login.controller;
 
+import com.example.demo.login.domain.model.SignupForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.LinkedHashMap;
@@ -28,7 +31,8 @@ public class SignupController {
 
     // ユーザー登録画面のGET用コントローラー
     @GetMapping("/signup")
-    public String getSignUp(Model model) {
+    // ModelAttribute -> 自動でModelクラスに登録する(addAttributeするイメージ)
+    public String getSignUp(@ModelAttribute SignupForm form, Model model) {
 
         // ラジオボタンの初期化メソッドの呼び出し
         radioMarriage = initRadioMarrige();
@@ -40,9 +44,18 @@ public class SignupController {
     }
 
     // ユーザー登録画面のPOST用コントローラー
+    // BindingResult -> データバインド結果を受け取る。バインド失敗や入力チェックエラー時はhasErrors()で検知
     @PostMapping("/signup")
-    public String postSignUp(Model model) {
-        // login.htmlに理大レクおt
+    public String postSignUp(@ModelAttribute SignupForm form, BindingResult bindingResult, Model model) {
+
+        // 入力チェックに引っかかった場合
+        if (bindingResult.hasErrors()) {
+            // Getリクエスト用のメソッドを呼び出して、ユーザ画面に戻る
+            return getSignUp(form, model);
+        }
+
+        System.out.println(form);
+        // login.htmlにリダイレクト
         return "redirect:/login";
     }
 }
