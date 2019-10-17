@@ -1,5 +1,6 @@
 package com.example.demo.login.controller;
 
+import com.example.demo.login.domain.model.GroupOrder;
 import com.example.demo.login.domain.model.SignupForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.GroupSequence;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -47,7 +49,7 @@ public class SignupController {
     // ユーザー登録画面のPOST用コントローラー
     // BindingResult -> データバインド結果を受け取る。バインド失敗や入力チェックエラー時はhasErrors()で検知
     @PostMapping("/signup")
-    public String postSignUp(@ModelAttribute @Validated SignupForm form,
+    public String postSignUp(@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
                              BindingResult bindingResult,
                              Model model) {
 
