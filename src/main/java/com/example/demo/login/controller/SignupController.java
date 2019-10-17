@@ -34,7 +34,7 @@ public class SignupController {
 
     // ユーザー登録画面のGET用コントローラー
     @GetMapping("/signup")
-    // ModelAttribute -> 自動でModelクラスに登録する(addAttributeするイメージ)
+    // ModelAttribute -> 自動でModelクラスに登録する(自動でaddAttributeするイメージ)
     public String getSignUp(@ModelAttribute SignupForm form, Model model) {
 
         // ラジオボタンの初期化メソッドの呼び出し
