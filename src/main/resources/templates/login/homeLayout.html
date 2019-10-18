@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<!-- Thymeleafを使用するための設定 -->
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layou="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <!-- Bootstrap setting -->
-    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet">
+    <meta charset="UTF-8"></meta>
+
+    <!-- Bootstrapの設定 -->
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
     <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
-    <link th:href="@{/css/home.css}" rel="stylesheet"/>
+
+    <!-- CSSの読込 -->
+    <link th:href="@{/css/home.css}" rel="stylesheet"></link>
+
+    <title>Home</title>
 </head>
 <body>
-<!-- ======== ヘッダー ======== -->
+<!-- ===== ヘッダー（ナビゲーションバー） =====  -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -22,21 +27,20 @@
         </form>
     </div>
 </nav>
-<!-- ======== サイドバー ======== -->
+<!-- ===== サイドバー ===== -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 sidebar">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation"><a th:href="@{/userList}"></a></li>
+                <li role="presentation"><a th:href="@{'/userList'}">ユーザ管理</a></li>
             </ul>
         </div>
     </div>
 </div>
-<!-- ======== コンテンツ  ======== -->
+<!-- ===== コンテンツ ===== -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-10 col-sm-offset-2 main">
-            <!-- th:include アンダースコアはプロセッシング（通常の処理より先に評価する）を使用するときの表記法 -->
             <div th:include="__${contents}__"></div>
         </div>
     </div>

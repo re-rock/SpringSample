@@ -38,4 +38,8 @@ public class User {
     //falseのみ可能
     @AssertFalse(groups = ValidGroup2.class, message = "{false_check}")
     private boolean marriage; // 結婚ステータス
+
+    // 権限
+    private String role;
+
 }
