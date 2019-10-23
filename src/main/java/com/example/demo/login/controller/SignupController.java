@@ -77,6 +77,15 @@ public class SignupController {
         user.setMarriage(form.isMarriage());
         user.setRole("ROLE_GENERAL");
 
+        // ユーザー登録処理
+        boolean result = userService.insert(user);
+        // ユーザー登録処理の結果
+        if(result == true) {
+            System.out.println("insert成功");
+        } else {
+            System.out.println("insert失敗");
+        }
+
         // login.htmlにリダイレクト
         return "redirect:/login";
     }

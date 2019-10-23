@@ -21,6 +21,6 @@ public class LoginController {
     public String postLogin(Model model) {
 
         // ホーム画面に遷移
-        return "/login/home";
+        return "redirect:/home";
     }
 }
