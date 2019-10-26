@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+@Repository("UserDaoJdbcImpl")// DIにBean名をセットする
 public class UserDaoJdbcImpl implements UserDao {
 
   @Autowired // JdbcTemplateはデフォルトでBean定義がされている
