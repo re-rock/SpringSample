@@ -49,6 +49,7 @@ public class HomeController {
     public String getUserList(Model model) {
 
         // コンテンツ部分にユーザー一覧を表示するための文字列を登録
+        // "login/userList"はhtmlファイル、"userList_contents"はfragment名
         model.addAttribute("contents", "login/userList :: userList_contents");
         // ユーザー一覧の生成
         List<User> userList = userService.selectMany();
@@ -61,7 +62,7 @@ public class HomeController {
         return "login/homeLayout";
     }
 
-    // ユーザー詳細画面のGET用メソッド
+    // ユーザー詳細画面のGET用メソッド "PathValue"でクエリパラメータを引数に引当てる
     @GetMapping("userDetail/{id:.+}")
     public String getUserDetail(@ModelAttribute SignupForm form,
                                 Model model,
@@ -115,6 +116,22 @@ public class HomeController {
             model.addAttribute("result", "更新成功");
         } else {
             model.addAttribute("result", "更新失敗");
+        }
+        return getUserList(model);
+    }
+
+    // ユーザー削除用処理
+    @PostMapping(value = "/userDetail", params = "delete")
+    public String postUserDetailDelete(@ModelAttribute SignupForm form,
+                                       Model model) {
+        System.out.println("削除ボタンの処理");
+
+        // 削除実行
+        boolean result = userService.deleteOne(form.getUserId());
+        if (result == true) {
+            model.addAttribute("result", "削除成功");
+        } else {
+            model.addAttribute("result", "削除失敗");
         }
         return getUserList(model);
     }

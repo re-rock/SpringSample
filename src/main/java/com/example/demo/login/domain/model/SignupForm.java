@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
-@Data
+@Data // @Data : lombokの有効化
 public class SignupForm {
 
     //必須入力、メールアドレス形式
