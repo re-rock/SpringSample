@@ -129,6 +129,17 @@ public class UserDaoJdbcImpl implements UserDao {
     return rowNumber;
   }
 
-  @Override // SQL取得結果をサーバーにCSVで保存する
-  public void userCsvOut() throws DataAccessException {}
+  //SQL取得結果をサーバーにCSVで保存する
+  @Override
+  public void userCsvOut() throws DataAccessException {
+
+    // M_USERテーブルのデータを全件取得するSQL
+    String sql = "SELECT * FROM m_user";
+
+    // ResultSetExtractorの生成\
+    UserRowCallbackHandler handler = new UserRowCallbackHandler();
+
+    //SQL実行＆CSV出力
+    jdbc.query(sql, handler);
+  }
 }
