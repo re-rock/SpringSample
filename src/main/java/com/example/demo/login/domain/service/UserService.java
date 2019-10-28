@@ -18,7 +18,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    @Qualifier("UserDaoJdbcImpl4")
+    @Qualifier("UserDaoNamedJdbcImpl")
     UserDao dao;
 
     // for insert
