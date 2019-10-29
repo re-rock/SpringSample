@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Repository("UserDaoJdbcImpl")// DIにBean名をセットする
+@Repository("UserDaoJdbcImpl") // DIにBean名をセットする
 public class UserDaoJdbcImpl implements UserDao {
 
   @Autowired // JdbcTemplateはデフォルトでBean定義がされている
@@ -116,6 +116,11 @@ public class UserDaoJdbcImpl implements UserDao {
             user.isMarriage(),
             user.getUserId());
 
+    // トランザクション確認。意図的に例外を発生させる
+    //    if (rowNumber > 0) {
+    //      throw new DataAccessException("トランザクションテスト") {};
+    //    }
+
     return rowNumber;
   }
 
@@ -129,7 +134,7 @@ public class UserDaoJdbcImpl implements UserDao {
     return rowNumber;
   }
 
-  //SQL取得結果をサーバーにCSVで保存する
+  // SQL取得結果をサーバーにCSVで保存する
   @Override
   public void userCsvOut() throws DataAccessException {
 
@@ -139,7 +144,7 @@ public class UserDaoJdbcImpl implements UserDao {
     // ResultSetExtractorの生成\
     UserRowCallbackHandler handler = new UserRowCallbackHandler();
 
-    //SQL実行＆CSV出力
+    // SQL実行＆CSV出力
     jdbc.query(sql, handler);
   }
 }
