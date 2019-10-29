@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- Thymeleafを使用するための設定 -->
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>404Error</title>
+</head>
+<body>
+<!-- 各種エラー内容の表示 -->
+<!-- status:HTTPのエラーコード、error:HTTPのエラー概要、message:エラーメッセージ -->
+<h1 th:text="${status} + ' ' + ${error}">error</h1>
+<p>404エラーページです</p>
+<p>ログイン画面に戻ってください</p>
+<form method="post" action="/logout">
+    <button class="btn btn-link" type="submit">ログイン画面に戻る</button>
+</form>
+</body>
+</html>
