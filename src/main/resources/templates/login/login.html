@@ -13,18 +13,24 @@
 <h1>Login</h1>
 
 <form method="post" action="/login">
-    <!--  user id  -->
-    <label>ユーザID</label>
-    <input type="text" /><br />
-    <br />
-    <!-- PW -->
+    <!-- エラーメッセージ -->
+    <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+       th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+       class="text-danger">
+        ログインエラーメッセージ
+    </p>
+    <!-- ユーザーID -->
+    <label>ユーザーID</label>
+    <input type="text" name="userId"/><br/>
+    <br/>
+    <!-- パスワード -->
     <label>パスワード</label>
-    <input type="password" /><br />
-    <br />
+    <input type="password" name="password"/><br/>
+    <br/>
     <!-- login button -->
     <button class="btn btn-primary" type="submit">ログイン</button>
 </form>
-<br />
+<br/>
 
 <!-- ユーザー登録画面へのリンク -->
 <a th:href="@{/signup}">ユーザー新規登録はこちら</a>
