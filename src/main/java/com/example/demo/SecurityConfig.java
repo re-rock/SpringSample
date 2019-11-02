@@ -70,6 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll() // ログインページは直リンクOK
         .antMatchers("/signup")
         .permitAll() // ユーザー登録画面は直リンクOK
+        .antMatchers("/admin")
+        .hasAuthority("ROLE_ADMIN")
         .anyRequest()
         .authenticated(); // それ以外は直リンク禁止
 
@@ -89,7 +91,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .logoutSuccessUrl("/login");
 
     // CSRF対策を一時的に無効に設定
-    http.csrf().disable();
+    // http.csrf().disable();
   }
 
   @Override
