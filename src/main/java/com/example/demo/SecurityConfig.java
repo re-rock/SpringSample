@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+  // マージテスト2 from feature-b
   // パスワードエンコーダーのBean定義
   @Bean
   public PasswordEncoder passwordEncoder() {
